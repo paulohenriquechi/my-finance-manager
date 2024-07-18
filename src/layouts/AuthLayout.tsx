@@ -1,3 +1,5 @@
+import { ModeToggle } from "@/components/mode-toogle";
+
 export default function AuthLayout({children}: {children: React.ReactNode}) {
     return (
         <div className="flex h-screen overflow-hidden">
@@ -11,6 +13,7 @@ export default function AuthLayout({children}: {children: React.ReactNode}) {
                 {/* header */}
                 <div className="border border-gray-200 py-4">
                     <h2>Header</h2>
+                    <ModeToggle/>
                 </div>
 
             {/* content */}
