@@ -83,6 +83,11 @@ export function App() {
           </div>
         </div>
         <div className="flex-1 border border-red-500">
+          {/* Card com valores de entrada */}
+          {/* Card com valores de saida */}
+          {/* Card com valor total */}
+          {/* filtragem */}
+          {/* Tabela com listagem de saidas */}
           <h2 className="text-2xl p-4">Create Expense</h2>
           <div className="p-4">
             <Dialog>

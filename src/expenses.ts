@@ -1,0 +1,92 @@
+export type Expense = {
+    id: number,
+    name: string,
+    category: string,
+    amount: number,
+    payment_type: string,
+    purchase_date: string
+}
+
+export const expenses: Expense[] = [
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    {
+        id: 1,
+        name: 'Air max plus',
+        category: 'sneakers',
+        amount: 1300.00,
+        payment_type: 'credit_card',
+        purchase_date: '2024-10-10',
+    },
+    
+]
