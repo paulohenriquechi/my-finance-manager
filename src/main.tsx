@@ -9,6 +9,8 @@ import {
 import { ThemeProvider } from "@/components/theme-provider"
 import AuthLayout from './layouts/AuthLayout.tsx';
 import Dashboard from './pages/Dashboard.tsx';
+import Expenses from './pages/Expenses.tsx';
+import Profile from './pages/Profile.tsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <AuthLayout children={<Dashboard />} />,
+  },
+  {
+    path: "/expenses",
+    element: <AuthLayout children={<Expenses />} />,
+  },
+  {
+    path: "/profile",
+    element: <AuthLayout children={<Profile />} />,
   },
 ]);
 
