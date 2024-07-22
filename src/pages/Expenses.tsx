@@ -5,7 +5,6 @@ import { Expense, expenses as data } from "@/expenses"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { DialogClose } from "@radix-ui/react-dialog"
 import { ColumnDef } from "@tanstack/react-table"
-import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
@@ -78,6 +77,7 @@ const createExpenseSchema = z.object({
     }),
     installments: z.coerce.number().min(1).default(1),
     purchase_date: z.coerce.date(),
+    status: z.coerce.string()
 })
 
 type createExpenseSchema = z.infer<typeof createExpenseSchema>
@@ -107,7 +107,7 @@ export default function Expenses() {
                         <Button variant={"outline"}>Create expense</Button>
                     </DialogTrigger>
 
-                    <DialogContent className="max-w-5xl h-2/4">
+                    <DialogContent className="w-2/4 min-h-2/4 h-fit">
                         <form onSubmit={handleSubmit(handleCreateExpense)}>
                             <DialogHeader>
                                 <DialogTitle>Create a new expense</DialogTitle>
@@ -115,8 +115,8 @@ export default function Expenses() {
 
                             <div className="grid grid-cols-12 gap-4 p-6">
 
-                                <div className="col-span-6">
-                                    <label htmlFor="name" className="block">Expense: </label>
+                                <div className="col-span-12">
+                                    <label htmlFor="name" className="block">Name: </label>
                                     <input {...register('name')} type="text" id="name" placeholder="Name" className="block mt-2 p-1.5 rounded-md border placeholder:text-gray-400 w-full" />
                                     {errors.name?.message ?? (
                                         <p>{errors.name?.message}</p>
@@ -136,18 +136,9 @@ export default function Expenses() {
                                     )}
                                 </div>
 
-                                <div className="col-span-4">
-                                    <label htmlFor="price">Price: </label>
-                                    <input {...register('price')} type="text" id="price" placeholder="100.00" className="block mt-2 p-1.5 rounded-md border placeholder:text-gray-400 w-full" />
-                                    {errors.price?.message ?? (
-                                        <p>{errors.price?.message}</p>
-                                    )}
-                                </div>
-
-
-                                <div className="col-span-4">
+                                <div className="col-span-6">
                                     <label htmlFor="payment_type">Payment Type</label>
-                                    <select {...register('payment_type')} id="payment_type" className="block mt-2 p-1.5 rounded-md border placeholder:text-gray-400 w-full" onChangeCapture={(e) => displayInstallmentInput(e.currentTarget.value)}>
+                                    <select {...register('payment_type')} id="payment_type" className="block mt-2 p-1.5 rounded-md border placeholder:text-gray-400 w-full">
                                         <option value="">Select a payment type</option>
                                         {PAYMENT_TYPES.map((paymentType, index) => (
                                             <option key={index} value={paymentType.value}>{paymentType.label}</option>
@@ -156,10 +147,38 @@ export default function Expenses() {
                                     {errors.payment_type?.message ?? (
                                         <p>{errors.payment_type?.message}</p>
                                     )}
+                                </div>
+
+                                <div className="col-span-6">
+                                    <label htmlFor="status">Status</label>
+                                    <select {...register('status')} id="status" className="block mt-2 p-1.5 rounded-md border placeholder:text-gray-400 w-full">
+                                        <option value="">Select a status</option>
+                                        <option value="paid">Paid</option>
+                                        <option value="pending">Pending</option>
+                                    </select>
+                                    {errors.status?.message ?? (
+                                        <p>{errors.status?.message}</p>
+                                    )}
+                                </div>
+
+                                <div className="col-span-6">
+                                    <label htmlFor="purchase_date">Purchase Date: </label>
+                                    <input {...register('purchase_date')} type="date" id="purchase_date" className="block mt-2 p-1.5 rounded-md border placeholder:text-gray-400 w-full" />
+                                    {errors.purchase_date?.message ?? (
+                                        <p>{errors.purchase_date?.message}</p>
+                                    )}
 
                                 </div>
 
-                                <div className="col-span-2">
+                                <div className="col-span-6">
+                                    <label htmlFor="price">Price: </label>
+                                    <input {...register('price')} type="text" id="price" placeholder="100.00" className="block mt-2 p-1.5 rounded-md border placeholder:text-gray-400 w-full" />
+                                    {errors.price?.message ?? (
+                                        <p>{errors.price?.message}</p>
+                                    )}
+                                </div>
+
+                                <div className="col-span-6">
                                     <label htmlFor="installments">Installments</label>
                                     <select
                                         {...register('installments')}
@@ -174,17 +193,6 @@ export default function Expenses() {
                                     {errors.installments?.message ?? (
                                         <p>{errors.installments?.message}</p>
                                     )}
-                                </div>
-
-
-
-                                <div className="col-span-2">
-                                    <label htmlFor="purchase_date">Purchase Date: </label>
-                                    <input {...register('purchase_date')} type="date" id="purchase_date" className="block mt-2 p-1.5 rounded-md border placeholder:text-gray-400 w-full" />
-                                    {errors.purchase_date?.message ?? (
-                                        <p>{errors.purchase_date?.message}</p>
-                                    )}
-
                                 </div>
 
                             </div>

@@ -15,10 +15,6 @@ import Profile from './pages/Profile.tsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-  },
-  {
-    path: "/dashboard",
     element: <AuthLayout children={<Dashboard />} />,
   },
   {
